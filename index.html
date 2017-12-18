@@ -8,11 +8,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
-
+    <script src="js/events.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/calculatorView.js"></script>
+    <script src="js/main.js"></script>
   </head>
-
-
-
 
   <body>
 
@@ -58,19 +58,19 @@
         	<div class="row mt-5">
 
         		<div class="col-4 d-inline-flex"><label for="usr" class="align-middle">Time:</label>
-      				<input type="text" class="form-control ml-3" id="usr" placeholder="hh">
-              <input type="text" class="form-control ml-3" id="usr" placeholder="mm">
-              <input type="text" class="form-control ml-3" id="usr" placeholder="ss">
+      				<input type="text" class="form-control ml-3" id="option1_hh" placeholder="hh">
+              <input type="text" class="form-control ml-3" id="option1_mm" placeholder="mm">
+              <input type="text" class="form-control ml-3" id="option1_ss" placeholder="ss">
       			</div>
 
 
         		<div class="col-6 d-inline-flex">
         			<label for="usr">Distance:</label>
-      				<input type="text" class="form-control ml-3" id="usr">
+      				<input type="text" class="form-control ml-3" id="option1_distance">
       			</div>
 
       			<div class="col-2">
-      				<select id="inputState" class="form-control">
+      				<select id="option1_type" class="form-control">
         			<option selected>Kms</option>
         			<option>Miles</option>
       				</select>
@@ -81,9 +81,13 @@
 
         	<div class="row">
         		<div class="col-4 offset-4 mt-5 mb-5">
-        			<button type="button" class="btn btn-primary btn-block">Calculate</button>
+        			<button type="button" class="btn btn-primary btn-block option1_button">Calculate</button>
         		</div>
         	</div>
+
+          <div class="row">
+            <p class="col-4 offset-4 text-center option1_result"></p>
+          </div>
         </div>
       </div>
     </div>
@@ -99,7 +103,7 @@
               <label for="usr">Select type for pace and distance</label>
             </div>
             <div class="col-2">
-              <select id="inputState" class="form-control">
+              <select id="inputState option2_type" class="form-control">
               <option selected>Kms</option>
               <option>Miles</option>
               </select>
@@ -108,12 +112,14 @@
 
           <div class="row">
             <div class="col-6 d-inline-flex"><label for="usr" class="align-middle">Pace:</label>
-              <input type="text" class="form-control ml-3" id="usr" placeholder="minutes km/mile">
+              <input type="text" class="form-control ml-3" id="option2_hh" placeholder="hh">
+              <input type="text" class="form-control ml-3" id="option2_mm" placeholder="mm">
+              <input type="text" class="form-control ml-3" id="option2_ss" placeholder="ss">
             </div>
 
             <div class="col-6 d-inline-flex">
               <label for="usr">Distance:</label>
-              <input type="text" class="form-control ml-3" id="usr">
+              <input type="text" class="form-control ml-3" id="usr option2_distance">
             </div>
           </div>
 
@@ -122,6 +128,10 @@
             <div class="col-4 offset-4 mt-5 mb-5">
               <button type="button" class="btn btn-primary btn-block">Calculate</button>
             </div>
+          </div>
+
+          <div class="row">
+            <p class="col-4 offset-4 text-center option2_result"></p>
           </div>
 
         </div>
@@ -142,7 +152,7 @@
               <label for="usr">Select type for pace, distance and cut</label>
             </div>
             <div class="col-2">
-              <select id="inputState" class="form-control">
+              <select id="inputState option3_type" class="form-control">
               <option selected>Kms</option>
               <option>Miles</option>
               </select>
@@ -151,19 +161,21 @@
 
           <div class="row">
             <div class="col-6 d-inline-flex"><label for="usr" class="align-middle">Pace:</label>
-              <input type="text" class="form-control ml-3" id="usr" placeholder="minutes km/mile">
+              <input type="text" class="form-control ml-3" id="option3_hh" placeholder="hh">
+              <input type="text" class="form-control ml-3" id="option3_mm" placeholder="mm">
+              <input type="text" class="form-control ml-3" id="option3_ss" placeholder="ss">
             </div>
 
             <div class="col-6 d-inline-flex">
               <label for="usr">Distance:</label>
-              <input type="text" class="form-control ml-3" id="usr">
+              <input type="text" class="form-control ml-3" id="usr option3_distance">
             </div>
           </div>
 
           <div class="row mt-5 mb-5 justify-content-center">
             <div class="col-4 d-inline-flex">
               <label for="usr">Cut:</label>
-              <input type="text" class="form-control ml-3" id="usr">
+              <input type="text" class="form-control ml-3" id="usr option3_cut">
             </div>
           </div> 
         </div>
@@ -174,6 +186,24 @@
               <button type="button" class="btn btn-primary btn-block">Calculate</button>
             </div>
           </div>
+
+          <div class="row">
+            <div class="col-6 offset-3">
+              <table class="table table-hover bg-danger">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Distance</th>
+                    <th>Mark</th>
+                  </tr>
+                </thead>
+                <tbody id="tableData">
+                
+                </tbody>
+              </table>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
