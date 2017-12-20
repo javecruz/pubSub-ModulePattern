@@ -5,7 +5,9 @@ var calculator = (function(){
 
 
 		function timeToSeconds(time){
-
+			time.hours = time.hours * 1;
+			time.minutes = time.minutes * 1;
+			time.seconds = time.seconds * 1;
 			return (((time.hours*60) + time.minutes)*60) + time.seconds;
 		}
 
@@ -138,19 +140,19 @@ var calculator = (function(){
 
 		var total = inKm * secondsPace;
 
-		events.publish("pace", timeConverter.secondsToTime(total))
+		events.publish("mark", timeConverter.secondsToTime(total))
 		return timeConverter.secondsToTime(total);
 	}
 
 
-	function markFromPaceperMile(pacePerMile,distanceInImperial){
+	function markFromPacePerMile(pacePerMile,distanceInImperial){
 		var inMiles = distanceConverter.imperialToMiles(distanceInImperial);
 
 		var secondsPace = timeConverter.timeToSeconds(pacePerMile);
 
 		var total = inMiles * secondsPace;
 
-		events.publish("pace", timeConverter.secondsToTime(total))
+		events.publish("mark", timeConverter.secondsToTime(total))
 		return timeConverter.secondsToTime(total);
 	}
 
@@ -186,14 +188,13 @@ var calculator = (function(){
 			//entra en el último
 			if(i+1==Math.ceil(distanceInMiles/distanceConverter.imperialToMiles(distanceConverter.yardsToImperial(cutDistanceInYards)))){
 				currentDistance = distanceInMiles;
-				console.log("entró")
 			}else{
 				currentDistance = distanceConverter.imperialToMiles(distanceConverter.yardsToImperial(cutDistanceInYards)) * (i+1);
 			}
 
 			datos.push({
 			distance:distanceConverter.milesToImperial(currentDistance),
-			mark:markFromPaceperMile(pacePerMile,distanceConverter.milesToImperial(currentDistance))
+			mark:markFromPacePerMile(pacePerMile,distanceConverter.milesToImperial(currentDistance))
 			})
 			
 		}
@@ -227,7 +228,7 @@ var calculator = (function(){
 		paceInKm:paceInKm,
 		paceInMiles:paceInMiles,
 		markFromPacePerKm:markFromPacePerKm,
-		markFromPaceperMile:markFromPaceperMile,
+		markFromPacePerMile:markFromPacePerMile,
 		tableTimeFromPacePerKm:tableTimeFromPacePerKm,
 		tableTimeFromPacePerMile,tableTimeFromPacePerMile,
 		creaTime:Time,

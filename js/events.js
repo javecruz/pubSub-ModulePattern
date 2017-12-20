@@ -30,21 +30,4 @@ var events = (function(){
   };
 })();
 
-var subscription = events.subscribe('/page/load', function(obj) {
-  // Do something now that the event has occurred
-  console.log(obj.url);
-});
-var subscription = events.subscribe('/page/load', function(obj) {
-  // Do something now that the event has occurred
-  console.log("este es otro evento de tipo /page/load");
-});
-
-
-events.publish('/page/load', {
-  url: '/some/url/path' // any argument
-});
-
-
-// ...sometime later where I no longer want subscription...
-subscription.remove();
 
